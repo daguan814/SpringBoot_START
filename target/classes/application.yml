@@ -1,40 +1,35 @@
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springboot_db
-    username: root
-    password: Lhf@2001.
-    type: com.alibaba.druid.pool.DruidDataSource
-
----
-#???????
-spring:
+spring:   #多环境开发
   profiles:
-    active: dev
+    active: dev    #目前环境
 ---
-#??
 spring:
   config:
     activate:
-      on-profile: dev
+      on-profile: dev   #开发
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot_db #?servierTimezone=UTC
+    username: root
+    password: Lhf@2001.
 server:
   port: 8080
 
+
 ---
-#??
 spring:
   config:
     activate:
-      on-profile: test
+      on-profile: test  #测试
 server:
   port: 81
 
 ---
-#??
 spring:
   config:
     activate:
-      on-profile: pro
+      on-profile: pro  #生产
 server:
   port: 82
 
